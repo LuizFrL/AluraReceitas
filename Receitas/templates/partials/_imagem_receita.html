@@ -1,0 +1,6 @@
+{% load static %}
+{% if imagem %}
+    <img src="{{ imagem }}">
+{% else %}
+    <img src="{% static default_image %}">
+{% endif %}

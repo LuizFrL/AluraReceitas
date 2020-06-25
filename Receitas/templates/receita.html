@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="{% static 'img/core-img/hamburger.png' %}" alt="">
+    </div>
+
+    {% include 'partials/_busca_receitas.html' %}
+
+    {% include 'partials/_menu.html' %}
+
+    <div class="receipe-post-area section-padding-80">
+
+        <!-- Receipe Post Search -->
+        <div class="receipe-post-search mb-80">
+            <div class="container">
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col-12 col-lg-5">
+                            <select name="select1" id="select1">
+                                <option value="1">Comida típica brasileira</option>
+                                <option value="1">Massas</option>
+                                <option value="1">Veganas</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-2 text-right">
+                            <button type="submit" class="btn delicious-btn">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Receipe Slider -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="receipe-slider owl-carousel">
+                        {% include 'partials/_imagem_receita.html' with imagem=inf_receita.imagem default_image='img/bg-img/tomate_banner.jpg' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Receipe Content Area -->
+        <div class="receipe-content-area">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="receipe-headline my-5">
+                            <span>{{ inf_receita.dia_preparo }}</span>
+                            <h2>{{ inf_receita.nome_receita }}</h2>
+                            <div class="receipe-duration">
+                                <h6>Preparo: {{ inf_receita.tempo_preparo }} minutos</h6>
+                                <h6>Rendimento: {{ inf_receita.rendimento }}</h6>
+                                <h6>Categoria: categoria</h6>
+                                <h6>Por: {{ inf_receita.pessoa.nome }}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <!-- Single Preparation Step -->
+                            <div class="single-preparation-step d-flex">
+                                <p>{{ inf_receita.modo_preparo }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Ingredientes -->
+                        <div class="col-12 col-lg-4">
+                            <div class="ingredients">
+                                <h4>Ingredientes</h4>
+                                <div class="ingredients">
+                                    <p>{{ inf_receita.ingredientes }}</p>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ingredientes -->
+
+                    {% include 'partials/_footer.html' %}
+{% endblock %}
