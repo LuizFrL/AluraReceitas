@@ -1,8 +1,6 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
 from .models import Receita
-from typing import List
 # Create your views here.
 
 
@@ -11,14 +9,14 @@ def index(request: WSGIRequest):
     dados: dict = {
         'receitas': receitas
     }
-    return render(request, 'index.html', dados)
+    return render(request, 'receitas/index.html', dados)
 
 
 def receita(request: WSGIRequest, receita_id: int):
     dados: dict = {
         'inf_receita': get_object_or_404(Receita, pk=receita_id)
     }
-    return render(request, 'receita.html', dados)
+    return render(request, 'receitas/receita.html', dados)
 
 
 def busca(request):
@@ -30,4 +28,4 @@ def busca(request):
     dados = {
         'receitas': receitas
     }
-    return render(request, 'busca.html', dados)
+    return render(request, 'receitas/busca.html', dados)
